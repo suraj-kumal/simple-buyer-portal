@@ -2,7 +2,7 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const User = require("../models/userModel");
 
-const SECRET = "verysecretkey";
+const SECRET = "hireme";
 
 const signup = async (req, res) => {
   const { name, email, password } = req.body;
@@ -23,12 +23,13 @@ const signup = async (req, res) => {
 const login = (req, res) => {
   const { email, password } = req.body;
 
-  User.findByEmail(email, async (err, user) => {
+  User.findUserByEmail(email, async (err, user) => {
     if (!user) return res.status(400).json({ error: "Invalid credentials" });
 
     const valid = await bcrypt.compare(password, user.password);
     if (!valid) return res.status(400).json({ error: "Invalid credentials" });
 
+    //algorithm weak but fine
     const token = jwt.sign(
       { id: user.id, name: user.name, role: user.role },
       SECRET,

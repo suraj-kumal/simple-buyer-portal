@@ -1,17 +1,21 @@
 const express = require("express");
+const cors = require("cors");
 
 const app = express();
 const PORT = process.env.PORT || 8000;
-const path = require("path");
 
-//frontend routes
+const authRoutes = require("./routes/authRoutes");
+const favouriteRoutes = require("./routes/favouriteRoutes");
 
-app.get("/login", () => {});
-app.get("/dashboard", () => {});
-app.get("/", (req, res) => {
-  res.json({ message: "hello world" });
-});
+//middlewares
+app.use(cors());
+app.use(express.json());
+app.use(express.static("public"));
+
+//routes
+app.use("/api/v1/auth", authRoutes);
+app.use("/api/v1/favourites", favouriteRoutes);
 
 app.listen(PORT, () => {
-  console.log(`Server is Listening at ${PORT}`);
+  console.log(` Server running on${PORT}`);
 });
