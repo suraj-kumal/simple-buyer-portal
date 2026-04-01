@@ -1,20 +1,27 @@
 const jwt = require("jsonwebtoken");
-const SECRET = "hireme";
+
+require("dotenv").config();
+const SECRET = process.env.JWT_SECRET || "hireme";
 
 const authMiddleware = (req, res, next) => {
-  const token = req.headers.authorization;
+  const authHeader = req.headers.authorization;
 
-  if (!token) return res.status(401).json({ error: "No token" });
+  if (!authHeader) {
+    return res.status(401).json({ error: "No authorization token provided" });
+  }
+
+  // Extract token from "Bearer <token>" format
+  const token = authHeader.startsWith("Bearer ")
+    ? authHeader.slice(7)
+    : authHeader;
 
   try {
-    //checking algorithms is crucial
-    // jwt can be exploited
     req.user = jwt.verify(token, SECRET, {
       algorithms: ["HS256"],
     });
     next();
-  } catch {
-    res.status(401).json({ error: "Invalid token" });
+  } catch (error) {
+    res.status(401).json({ error: "Invalid or expired token" });
   }
 };
 

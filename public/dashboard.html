@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard - Real Estate Buyer Portal</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="header">
+      <div class="container">
+        <div class="header-content">
+          <h1>🏠 Real Estate Portal</h1>
+          <div class="nav-links">
+            <div class="user-info">
+              Welcome, <strong id="user-name">User</strong>
+            </div>
+            <button class="btn-secondary btn-icon" onclick="handleLogout()">
+              Log Out
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <!-- Dashboard Grid -->
+      <div class="dashboard">
+        <!-- Main Content -->
+        <div>
+          <!-- Browse Properties Section -->
+          <div class="section-header">
+            <h2>Browse Properties</h2>
+          </div>
+          <div class="grid" id="properties-grid">
+            <div class="empty-state">
+              <p>Loading properties...</p>
+            </div>
+          </div>
+
+          <!-- My Favorites Section -->
+          <div class="section-header">
+            <h2>My Favorites</h2>
+          </div>
+          <div class="grid" id="favorites-grid">
+            <div class="empty-state">
+              <p>No favorites yet. Add one from the properties above!</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sidebar Profile Card -->
+        <aside>
+          <div class="profile-card" id="profile-card">
+            <h3>Your Profile</h3>
+            <div class="profile-name" id="profile-name">Loading...</div>
+            <div class="profile-email" id="profile-email">—</div>
+            <div class="profile-role" id="profile-role">buyer</div>
+            <button class="btn-danger btn-icon" onclick="handleLogout()">
+              Log Out
+            </button>
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">
+      <span id="toast-message"></span>
+      <button class="toast-close" onclick="closeToast()">×</button>
+    </div>
+
+    <script src="api.js"></script>
+    <script src="ui.js"></script>
+    <script src="auth.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

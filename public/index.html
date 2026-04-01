@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - Real Estate Buyer Portal</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="header">
+      <div class="container">
+        <div class="header-content">
+          <h1>🏠 Real Estate Portal</h1>
+          <div class="nav-links">
+            <a href="/signup.html">Create Account</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="form-container">
+        <div class="form-section">
+          <h2>Log In</h2>
+          <p class="form-subtitle">
+            Welcome back! Please log in to your account.
+          </p>
+          <form id="login-form" onsubmit="handleLogin(event)">
+            <div class="form-group">
+              <label for="lemail">Email Address</label>
+              <input
+                type="email"
+                id="lemail"
+                placeholder="john@example.com"
+                required
+              />
+              <div class="error-message" id="lemail-error"></div>
+            </div>
+
+            <div class="form-group">
+              <label for="lpassword">Password</label>
+              <input
+                type="password"
+                id="lpassword"
+                placeholder="Enter your password"
+                required
+              />
+              <div class="error-message" id="lpassword-error"></div>
+            </div>
+
+            <button type="submit" class="btn-primary">Log In</button>
+          </form>
+
+          <div class="form-footer">
+            <p>
+              Don't have an account? <a href="/signup.html">Sign up here</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">
+      <span id="toast-message"></span>
+      <button class="toast-close" onclick="closeToast()">×</button>
+    </div>
+
+    <script src="api.js"></script>
+    <script src="ui.js"></script>
+    <script src="auth.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
