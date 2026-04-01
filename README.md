@@ -1,8 +1,6 @@
-# Real Estate Buyer Portal - Auth & Favorites System
+# Simple Buyer Portal - Auth & Favorites System
 
 A full-stack web application for a real estate buyer portal with user authentication and favorites management. Built with Express.js backend and vanilla JavaScript frontend.
-
-
 
 
 ### Prerequisites
@@ -14,7 +12,8 @@ A full-stack web application for a real estate buyer portal with user authentica
 1. **Clone/Extract the project:**
 
 ```bash
-git clone simple-buyer-portal
+git clone https://github.com/suraj-kumal/simple-buyer-portal.git
+cd simple-buyer-portal
 ```
 
 2. **Install dependencies:**
